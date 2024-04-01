@@ -1,0 +1,24 @@
+:root {
+  --tile-start-rgb: 239, 245, 249;
+  --background-color: #fcf7f0;
+  --text-light: #f4f0ea;
+  --text-dark: #4c3d30;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  background-color: var(--background-color);
+  // overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
