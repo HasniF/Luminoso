@@ -6,4 +6,24 @@
   height: 100vh;
   background-color: #000;
   transform-origin: top;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar {
+  display: flex;
+
+  li {
+    color: white;
+    font-family: "Manrope", sans-serif;
+    font-size: 6.5vw;
+    line-height: 1.2;
+    overflow: hidden;
+
+    span {
+      display: inline-block;
+      line-height: 1;
+      text-align: center;
+    }
+  }
 }
