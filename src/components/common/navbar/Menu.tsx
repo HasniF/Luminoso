@@ -4,9 +4,12 @@
 | Author: FODEILLA Hasni (hasni1.fodeilla@epitech.eu)
 */
 
-import React from "react";
+import React, { useEffect } from "react";
 import style from "@/styles/components/Menu.module.scss";
 import { motion } from "framer-motion";
+import { menuList } from "@/contract/constant";
+import { useRouter } from "next/router";
+import Image from "next/image";
 /*
 |--------------------------------------------------------------------------
 | Contracts
@@ -15,31 +18,11 @@ import { motion } from "framer-motion";
 export interface MenuProps {
   children?: React.ReactNode;
   displayMenu: boolean;
+  setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const list = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "Shop",
-    link: "/shop",
-  },
-  {
-    name: `About`,
-    link: "/about",
-  },
-  {
-    name: "Archive",
-    link: "/archive",
-  },
-  {
-    name: "Contact",
-    link: "/contact",
-  },
-];
-
+interface ImageIllustrationProps {
+  name: string;
+}
 /*
 |--------------------------------------------------------------------------
 | Animation
@@ -56,7 +39,7 @@ const menuVariants = {
     scaleY: 1,
     transition: menuTransition,
   },
-  exit: { scaleY: 0, transition: { ...menuTransition, delay: 0.45 } },
+  exit: { scaleY: 0, transition: { ...menuTransition, delay: 0.5 } },
 };
 
 const letterVariants = {
@@ -68,14 +51,78 @@ const letterVariants = {
   },
 };
 
+const illustrationVariants = {
+  initial: { scaleY: 1 },
+  animate: {
+    scaleY: 0,
+    transition: {
+      duration: 1.1,
+      ease: [0.83, 0, 0.17, 1],
+      delay: 0.9,
+    },
+  },
+  exit: {
+    scaleY: 1,
+    transition: {
+      duration: 1,
+      ease: [0.83, 0, 0.17, 1],
+    },
+  },
+};
 /*
 |--------------------------------------------------------------------------
 | Component
 |--------------------------------------------------------------------------
 */
-export const Menu: React.FC<MenuProps> = ({ displayMenu }) => {
-  const [MenuAnimationEnd, setMenuAnimationEnd] = React.useState(false);
 
+const ImageIllustration: React.FC<ImageIllustrationProps> = ({ name }) => {
+  return (
+    <div className={style.illustration}>
+      <motion.div
+        className={style.hider}
+        variants={illustrationVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      />
+      <Image
+        src={`/images/menu/${name.toLocaleLowerCase()}.jpg`}
+        alt="illustration"
+        width={380}
+        height={480}
+      />
+    </div>
+  );
+};
+export const Menu: React.FC<MenuProps> = ({ displayMenu, setDisplayMenu }) => {
+  const router = useRouter();
+  // States
+  //--------------------------------------------------------------------------
+  const [menuAnimationEnd, setMenuAnimationEnd] = React.useState(false);
+  const [elementHovered, setElementHovered] = React.useState<boolean>(false);
+  const [elementHoveredIndex, setElementHoveredIndex] = React.useState<string>(
+    router.pathname === "/" ? "home" : router.pathname.split("/")[1]
+  );
+
+  // Methods
+  //--------------------------------------------------------------------------
+  const handleMouseEnter = (name: string) => {
+    setElementHovered(true);
+    setElementHoveredIndex(name);
+  };
+
+  const handleMouseLeave = () => {
+    setElementHovered(false);
+    setElementHoveredIndex(
+      router.pathname === "/" ? "home" : router.pathname.split("/")[1]
+    );
+  };
+
+  const handleClick = (link: string, name: string) => {
+    setDisplayMenu(false);
+    setElementHoveredIndex(name);
+    link !== router.pathname && router.push(link);
+  };
   // Render
   //--------------------------------------------------------------------------
   return (
@@ -89,15 +136,25 @@ export const Menu: React.FC<MenuProps> = ({ displayMenu }) => {
     >
       <nav className={style.navbar}>
         <ul>
-          {list.map((item, index) => (
+          {menuList.map((item, index) => (
             <li key={index}>
-              <span>
+              <span
+                onMouseEnter={() => handleMouseEnter(item.name)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleClick(item.link, item.name)}
+              >
                 {item.name.split("").map((letter, id) => (
                   <motion.span
                     key={id}
+                    style={{
+                      opacity:
+                        elementHovered && elementHoveredIndex !== item.name
+                          ? 0.5
+                          : 1,
+                    }}
                     initial={letterVariants.initial}
                     animate={
-                      MenuAnimationEnd
+                      menuAnimationEnd
                         ? {
                             ...letterVariants.animate,
                             transition: {
@@ -125,6 +182,7 @@ export const Menu: React.FC<MenuProps> = ({ displayMenu }) => {
           ))}
         </ul>
       </nav>
+      <ImageIllustration name={elementHoveredIndex} />
     </motion.div>
   );
 };

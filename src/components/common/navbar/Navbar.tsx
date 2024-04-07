@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({ item }) => {
         <p>Cart (0)</p>
       </div>
       <AnimatePresence mode="wait">
-        {displayMenu && <Menu displayMenu />}
+        {displayMenu && <Menu displayMenu setDisplayMenu={setDisplayMenu} />}
       </AnimatePresence>
     </nav>
   );
