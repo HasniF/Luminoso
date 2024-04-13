@@ -29,7 +29,7 @@ interface ImageIllustrationProps {
 |--------------------------------------------------------------------------
 */
 const menuTransition = {
-  duration: 1.2,
+  duration: 1.15,
   ease: [0.83, 0, 0.17, 1],
 };
 
@@ -74,7 +74,7 @@ const illustrationVariants = {
 | Component
 |--------------------------------------------------------------------------
 */
-
+const ImageMotion = motion(Image);
 const ImageIllustration: React.FC<ImageIllustrationProps> = ({ name }) => {
   return (
     <div className={style.illustration}>
@@ -85,7 +85,7 @@ const ImageIllustration: React.FC<ImageIllustrationProps> = ({ name }) => {
         animate="animate"
         exit="exit"
       />
-      <Image
+      <ImageMotion
         src={`/images/menu/${name.toLocaleLowerCase()}.jpg`}
         alt="illustration"
         width={380}
