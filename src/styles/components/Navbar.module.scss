@@ -9,6 +9,7 @@
   background-color: var(--background-color);
   border-bottom: 0.5px solid rgba(76, 61, 48, 0.5);
   padding: 1.2rem;
+  z-index: 100;
 
   p {
     // color: var(--text-dark);
@@ -38,7 +39,7 @@
   flex-direction: column;
   line-height: 1;
   overflow: hidden;
-  height: 1.1em;
+  height: 0.875rem;
   .spanMotion {
     display: inline-block;
     line-height: 1;

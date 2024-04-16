@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@studio-freight/lenis':
+    specifier: ^1.0.42
+    version: 1.0.42
   framer-motion:
     specifier: ^11.0.24
     version: 11.0.24(react-dom@18.0.0)(react@18.0.0)
@@ -117,6 +120,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@studio-freight/lenis@1.0.42:
+    resolution: {integrity: sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg==}
+    dev: false
 
   /@swc/helpers@0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}

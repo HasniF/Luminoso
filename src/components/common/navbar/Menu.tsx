@@ -43,9 +43,9 @@ const menuVariants = {
 };
 
 const letterVariants = {
-  initial: { y: 100 },
+  initial: { y: 150 },
   animate: { y: 0 },
-  exist: { y: 100 },
+  exist: { y: 150 },
   transition: {
     duration: 1,
   },
@@ -64,7 +64,7 @@ const illustrationVariants = {
   exit: {
     scaleY: 1,
     transition: {
-      duration: 1,
+      duration: 1.1,
       ease: [0.83, 0, 0.17, 1],
     },
   },

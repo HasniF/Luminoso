@@ -1,6 +1,15 @@
 import Head from "next/head";
+import { useRef } from "react";
+import { FirstSection, VideoIntro } from "@/components";
+import { useScroll } from "framer-motion";
+import style from "@/styles/pages/Home.module.scss";
 
 export default function Home() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
   return (
     <>
       <Head>
@@ -12,7 +21,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section></section>
+      <section ref={ref} className={style.wrapper}>
+        <VideoIntro scrollYProgress={scrollYProgress} />
+        <FirstSection />
+      </section>
     </>
   );
 }
