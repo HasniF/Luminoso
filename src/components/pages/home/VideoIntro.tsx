@@ -28,7 +28,20 @@ export const VideoIntro: React.FC<VideoIntroProps> = ({ scrollYProgress }) => {
   //--------------------------------------------------------------------------
   return (
     <div className={style.video_container}>
-      <motion.video autoPlay loop muted playsInline style={{ scale }}>
+      <motion.video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ scale }}
+        initial={{ scale: 1.4 }}
+        animate={{ scale: 1.2 }}
+        transition={{
+          delay: 1.25,
+          duration: 0.8,
+          ease: [0.37, 0, 0.63, 1],
+        }}
+      >
         <source src="/videos/intro.mp4" type="video/mp4" />
       </motion.video>
     </div>
