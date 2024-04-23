@@ -1,0 +1,29 @@
+.first_section {
+  position: relative;
+  height: 170vh;
+  overflow: hidden;
+}
+
+.video_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0% 65%;
+    filter: brightness(0.9);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .video_container {
+    video {
+      object-position: 50%;
+    }
+  }
+}

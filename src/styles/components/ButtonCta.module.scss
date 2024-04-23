@@ -1,0 +1,36 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  background: var(--background-color);
+  border: 1.5px solid;
+  border-radius: 26px;
+  cursor: pointer;
+  overflow: hidden;
+
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.span_label_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  height: 1rem;
+
+  span {
+    font-size: 1rem;
+    height: 1rem;
+    font-family: "Manrope", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+}

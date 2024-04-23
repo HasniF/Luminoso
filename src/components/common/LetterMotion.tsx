@@ -30,17 +30,17 @@ export const LetterMotion: React.FC<LetterMotionProps> = (props) => {
     animate: {
       transition: {
         staggerChildren: 0.04,
-        delayChildren: 1.23,
+        delayChildren: 1.25,
       },
     },
   };
 
   const letterVariants: Variants = {
-    initial: { y: 250 },
+    initial: { y: 300 },
     animate: {
       y: 0,
       transition: {
-        duration: 1,
+        duration: 1.2,
         ease: [0.25, 1, 0.5, 1],
       },
     },

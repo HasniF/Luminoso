@@ -46,3 +46,9 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .navbar {
+    padding: 1.2rem 0.5rem;
+  }
+}

@@ -5,7 +5,7 @@
 */
 
 import React, { useEffect, useState } from "react";
-import style from "@/styles/pages/Home.module.scss";
+import style from "@/styles/pages/home/Home.module.scss";
 import { MotionValue, motion, useTransform } from "framer-motion";
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ export interface VideoIntroProps {
 |--------------------------------------------------------------------------
 */
 export const VideoIntro: React.FC<VideoIntroProps> = ({ scrollYProgress }) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
   // Render
   //--------------------------------------------------------------------------
   return (
@@ -35,7 +35,7 @@ export const VideoIntro: React.FC<VideoIntroProps> = ({ scrollYProgress }) => {
         playsInline
         style={{ scale }}
         initial={{ scale: 1.4 }}
-        animate={{ scale: 1.2 }}
+        animate={{ scale: 1.3 }}
         transition={{
           delay: 1.25,
           duration: 0.8,
