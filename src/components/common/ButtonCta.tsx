@@ -19,6 +19,7 @@ export interface ButtonCtaProps {
   color: string;
   bgColor: string;
   borderColor: string;
+  delayEnter?: number;
 }
 /*
 |--------------------------------------------------------------------------
@@ -36,15 +37,26 @@ const buttonVariants = {
 */
 
 export const ButtonCta: React.FC<ButtonCtaProps> = (props) => {
-  const { label, color, borderColor, bgColor } = props;
+  const { label, color, borderColor, bgColor, delayEnter } = props;
   const [anime, setAnime] = React.useState(false);
   // Render
   //--------------------------------------------------------------------------
   return (
-    <button
+    <motion.button
       className={style.container}
       onMouseEnter={() => setAnime(true)}
       onMouseLeave={() => setAnime(false)}
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: delayEnter,
+          duration: 1,
+          ease: [0.25, 1, 0.5, 1],
+        },
+      }}
+      viewport={{ once: true }}
       style={{
         color,
         borderColor,
@@ -66,6 +78,6 @@ export const ButtonCta: React.FC<ButtonCtaProps> = (props) => {
           ))}
         </span>
       </div>
-    </button>
+    </motion.button>
   );
 };

@@ -14,6 +14,7 @@ import { Variants, motion } from "framer-motion";
 export interface LetterMotionProps {
   children?: React.ReactNode;
   word: string;
+  // setCanScroll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 /*
 |--------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 
 import React from "react";
 import style from "@/styles/pages/home/FirstSection.module.scss";
-import { LetterMotion } from "@/components";
+import { LetterMotion, TextAnimate } from "@/components";
 import { ButtonCta } from "@/components/common/ButtonCta";
 import { MotionValue, motion, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -44,21 +44,11 @@ const spanParentVariants = {
     y: 0,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.3,
+      delayChildren: 0.5,
     },
   },
 };
 
-const spanVariants = {
-  initial: { y: 300 },
-  animate: {
-    y: 0,
-    transition: {
-      duration: 1.5,
-      ease: [0.25, 1, 0.5, 1],
-    },
-  },
-};
 /*
 |--------------------------------------------------------------------------
 | Component
@@ -68,9 +58,9 @@ export const FirstSection: React.FC<FirstSectionProps> = ({
   scrollYProgress,
 }) => {
   const translateY = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const translteOne = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const translteTwo = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const translteThree = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const translteOne = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const translteTwo = useTransform(scrollYProgress, [0, 1], [0, -250]);
+  const translteThree = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   const images = [
     {
@@ -86,7 +76,6 @@ export const FirstSection: React.FC<FirstSectionProps> = ({
       parallax: translteThree,
     },
   ];
-
   // Render
   //--------------------------------------------------------------------------
   return (
@@ -122,19 +111,9 @@ export const FirstSection: React.FC<FirstSectionProps> = ({
           viewport={{ once: true }}
           style={{ y: translateY }}
         >
-          <span>
-            <motion.span variants={spanVariants}>
-              Craft your story with
-            </motion.span>
-          </span>
-          <span>
-            <motion.span variants={spanVariants}>
-              timeless furniture where
-            </motion.span>
-          </span>
-          <span>
-            <motion.span variants={spanVariants}>style endures.</motion.span>
-          </span>
+          <TextAnimate
+            text={`Craft your story with \n timeless furniture where \n style endures.`}
+          />
         </motion.h2>
         <div className={style.images_container}>
           {images.map(({ src, parallax }, index) => (

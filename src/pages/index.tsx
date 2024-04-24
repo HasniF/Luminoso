@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRef } from "react";
-import { FirstSection, VideoIntro } from "@/components";
+import { FirstSection, VideoIntro, WelcomeSection } from "@/components";
 import { useScroll } from "framer-motion";
 import style from "@/styles/pages/home/Home.module.scss";
 
@@ -11,7 +11,6 @@ export default function Home() {
     offset: ["start start", "end start"],
   });
 
-  console.log("scrollYProgress", scrollYProgress);
   return (
     <>
       <Head>
@@ -28,15 +27,13 @@ export default function Home() {
         <FirstSection scrollYProgress={scrollYProgress} />
       </section>
       <section>
-        {Array.from({ length: 20 }).map((_, index) => (
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-            cupiditate ducimus dolores nulla quas recusandae, obcaecati sit
-            aliquam praesentium, ipsam officia. Optio, quos! Accusamus iusto
-            temporibus omnis sit reiciendis optio?
-          </p>
-        ))}
+        <WelcomeSection />
       </section>
+      <div
+        style={{
+          minHeight: "100vh",
+        }}
+      />
     </>
   );
 }
